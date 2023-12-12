@@ -8,8 +8,10 @@ import {
 } from "@mediapipe/drawing_utils"
 
 import { HAND_CONNECTIONS } from "@mediapipe/hands"
+import { Box } from "@mui/material"
 // import model from './model/gesture_recognizer (1).task'
 // import model from './model/'
+import "./Hgr.css"
 
 let startTime = "" as any
 
@@ -174,44 +176,46 @@ function HGR() {
 
 	return (
 		<>
-			<div className="signlang_detection-container">
-				<>
-					<div style={{ position: "relative" }}>
-						<canvas ref={canvasRef} className="signlang_canvas" />
-						<Webcam
-							audio={false}
-							ref={webcamRef}
-							// screenshotFormat="image/jpeg"
-							className="signlang_webcam"
-							style={{ position: "absolute", left: 0, zIndex: -1 }}
-						/>
-					</div>
-
-					<div className="signlang_data-container">
-						<button onClick={enableCam}>
-							{webcamRunning ? "Stop" : "Start"}
-						</button>
-
-						<div className="signlang_data">
-							<p className="gesture_output">{gestureOutput}</p>
+			<Box component="main" sx={{ p: 3 }}>
+				<div className="signlang_detection-container">
+					<>
+						<div style={{ position: "relative" }}>
+							<canvas ref={canvasRef} className="signlang_canvas" />
+							<Webcam
+								audio={false}
+								ref={webcamRef}
+								// screenshotFormat="image/jpeg"
+								className="signlang_webcam"
+								style={{ position: "absolute", left: 0, zIndex: -1 }}
+							/>
 						</div>
-					</div>
 
-					{/* <div className="signlang_imagelist-container">
+						<div className="signlang_data-container">
+							<button onClick={enableCam}>
+								{webcamRunning ? "Stop" : "Start"}
+							</button>
+
+							<div className="signlang_data">
+								<p className="gesture_output">{gestureOutput}</p>
+							</div>
+						</div>
+
+						{/* <div className="signlang_imagelist-container">
 						<h2 className="gradient__text">Image</h2>
-
+						
 						<div className="signlang_image-div">
-							{currentImage ? (
-								<img src={currentImage.url} alt={`img ${currentImage.id}`} />
+						{currentImage ? (
+							<img src={currentImage.url} alt={`img ${currentImage.id}`} />
 							) : (
 								<h3 className="gradient__text">
-									Click on the Start Button <br /> to practice with Images
+								Click on the Start Button <br /> to practice with Images
 								</h3>
-							)}
-						</div>
-					</div> */}
-				</>
-			</div>
+								)}
+								</div>
+							</div> */}
+					</>
+				</div>
+			</Box>
 		</>
 	)
 }

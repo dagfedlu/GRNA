@@ -1,7 +1,12 @@
+import { Box, Toolbar, Typography } from "@mui/material"
+
 function Home() {
 	return (
 		<>
-			<h1>Home</h1>
+			<Box component="main" sx={{ p: 3 }}>
+				<Toolbar />
+				<Typography>You are home</Typography>
+			</Box>
 		</>
 	)
 }
