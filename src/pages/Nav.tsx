@@ -17,7 +17,6 @@ import { Link } from "@mui/material"
 // import { Link } from "react-router-dom"
 
 const drawerWidth = 240
-const navItems = ["Home", "HGR", "Learn"]
 
 export default function Nav() {
 	const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -33,13 +32,21 @@ export default function Nav() {
 			</Typography>
 			<Divider />
 			<List>
-				{navItems.map((item) => (
-					<ListItem key={item} disablePadding>
-						<ListItemButton sx={{ textAlign: "center" }}>
-							<ListItemText primary={item} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				<ListItem disablePadding>
+					<ListItemButton sx={{ textAlign: "center" }} href="/">
+						<ListItemText primary="Home" />
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding>
+					<ListItemButton sx={{ textAlign: "center" }} href="/learn">
+						<ListItemText primary="Learn" />
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding>
+					<ListItemButton sx={{ textAlign: "center" }} href="/hgr">
+						<ListItemText primary="HGR" />
+					</ListItemButton>
+				</ListItem>
 			</List>
 		</Box>
 	)
