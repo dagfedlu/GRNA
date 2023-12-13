@@ -185,6 +185,7 @@ function HGR() {
 								audio={false}
 								ref={webcamRef}
 								// screenshotFormat="image/jpeg"
+								mirrored={true}
 								className="signlang_webcam"
 								style={{ position: "absolute", left: 0, zIndex: -1 }}
 							/>
