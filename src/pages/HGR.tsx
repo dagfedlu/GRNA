@@ -6,9 +6,13 @@ import {
 	drawLandmarks,
 	// HAND_CONNECTIONS,
 } from "@mediapipe/drawing_utils"
-
 import { HAND_CONNECTIONS } from "@mediapipe/hands"
+
+import * as React from "react"
 import { Box } from "@mui/material"
+import Button from "@mui/material/Button"
+import CssBaseline from "@mui/material/CssBaseline"
+import Container from "@mui/material/Container"
 // import model from './model/gesture_recognizer (1).task'
 // import model from './model/'
 import "./Hgr.css"
@@ -176,32 +180,39 @@ function HGR() {
 
 	return (
 		<>
-			<Box component="main" sx={{ p: 3 }}>
-				<div className="signlang_detection-container">
-					<>
-						<div style={{ position: "relative" }}>
-							<canvas ref={canvasRef} className="signlang_canvas" />
-							<Webcam
-								audio={false}
-								ref={webcamRef}
-								// screenshotFormat="image/jpeg"
-								mirrored={true}
-								className="signlang_webcam"
-								style={{ position: "absolute", left: 0, zIndex: -1 }}
-							/>
-						</div>
+			<React.Fragment>
+				<CssBaseline />
+				<Container maxWidth="sm">
+					<Box component="main" sx={{ p: 3 }}>
+						<div className="signlang_detection-container">
+							<>
+								<div style={{ position: "relative" }}>
+									<canvas ref={canvasRef} className="signlang_canvas" />
+									<Webcam
+										audio={false}
+										ref={webcamRef}
+										// screenshotFormat="image/jpeg"
+										mirrored={true}
+										className="signlang_webcam"
+										style={{ position: "absolute", left: 0, zIndex: -1 }}
+									/>
+								</div>
 
-						<div className="signlang_data-container">
-							<button onClick={enableCam}>
-								{webcamRunning ? "Stop" : "Start"}
-							</button>
+								<div className="signlang_data-container">
+									<Button
+										onClick={enableCam}
+										variant="contained"
+										color={webcamRunning ? "error" : "success"}
+									>
+										{webcamRunning ? "Stop" : "Start"}
+									</Button>
 
-							<div className="signlang_data">
-								<p className="gesture_output">{gestureOutput}</p>
-							</div>
-						</div>
+									<div className="signlang_data">
+										<p className="gesture_output">{gestureOutput}</p>
+									</div>
+								</div>
 
-						{/* <div className="signlang_imagelist-container">
+								{/* <div className="signlang_imagelist-container">
 						<h2 className="gradient__text">Image</h2>
 						
 						<div className="signlang_image-div">
@@ -214,9 +225,11 @@ function HGR() {
 								)}
 								</div>
 							</div> */}
-					</>
-				</div>
-			</Box>
+							</>
+						</div>
+					</Box>
+				</Container>
+			</React.Fragment>
 		</>
 	)
 }
