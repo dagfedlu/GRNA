@@ -1,7 +1,4 @@
-import * as React from "react"
 import ReactDOM from "react-dom"
-import "./App.css"
-// import { createRoot } from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import HGR from "./pages/HGR"

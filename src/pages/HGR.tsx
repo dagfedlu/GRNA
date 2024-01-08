@@ -9,7 +9,12 @@ import {
 import { HAND_CONNECTIONS } from "@mediapipe/hands"
 
 import * as React from "react"
-import { Box } from "@mui/material"
+import {
+	Box,
+	LinearProgress,
+	LinearProgressProps,
+	Typography,
+} from "@mui/material"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import Container from "@mui/material/Container"
@@ -18,6 +23,27 @@ import Container from "@mui/material/Container"
 import "./Hgr.css"
 
 let startTime = "" as any
+
+function LinearProgressWithLabel(
+	props: LinearProgressProps & { value: number }
+) {
+	return (
+		<Box sx={{ display: "flex", alignItems: "center" }}>
+			<Box sx={{ width: "40%", mr: 1, px: 3 }}>
+				<LinearProgress
+					variant="determinate"
+					{...props}
+					sx={{ height: 15, borderRadius: 5 }}
+				/>
+			</Box>
+			<Box sx={{ minWidth: 35 }}>
+				<Typography variant="body2" color="text.secondary">{`${Math.round(
+					props.value
+				)}%`}</Typography>
+			</Box>
+		</Box>
+	)
+}
 
 function HGR() {
 	const webcamRef = useRef(null) as any
@@ -207,24 +233,13 @@ function HGR() {
 										{webcamRunning ? "Stop" : "Start"}
 									</Button>
 
-									<div className="signlang_data">
-										<p className="gesture_output">{gestureOutput}</p>
-									</div>
+									{/* gesture output and accuracy */}
+									<Box>
+										<Typography>{gestureOutput}</Typography>
+										{progress && <Typography>Accuracy: {progress}%</Typography>}
+									</Box>
+									{progress && <LinearProgressWithLabel value={progress} />}
 								</div>
-
-								{/* <div className="signlang_imagelist-container">
-						<h2 className="gradient__text">Image</h2>
-						
-						<div className="signlang_image-div">
-						{currentImage ? (
-							<img src={currentImage.url} alt={`img ${currentImage.id}`} />
-							) : (
-								<h3 className="gradient__text">
-								Click on the Start Button <br /> to practice with Images
-								</h3>
-								)}
-								</div>
-							</div> */}
 							</>
 						</div>
 					</Box>
