@@ -1,0 +1,20 @@
+/* flex or grid */
+/* media query for common devices */
+@media screen and (max-width: 550px) {
+  .signlang_webcam {
+    width: 100%;
+    height: fit-content;
+  }
+  .signlang_canvas {
+    width: 100%;
+    height: fit-content;
+  }
+  .signlang_data-container .signlang_data {
+    padding: 0 0.5rem;
+  }
+  .signlang_data-container p {
+    font-size: 18px;
+    width: 30%;
+  }
+}
+/* center static content and style using relative (em / rem) not pixels */
